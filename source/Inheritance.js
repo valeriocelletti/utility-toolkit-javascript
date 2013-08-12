@@ -16,6 +16,12 @@
 define([], function(){
   
   /**
+   * @method
+   * 
+   * @param {Object} o
+   * @param {Function} tc
+   * @param {Array} params
+   * 
    * @private
    */
   function doCall(o,tc,params) {
@@ -89,10 +95,10 @@ define([], function(){
       }
      
       if (!lightExtension) {
-        //setup the extended class for super calls
-        subClass.prototype._super_ = superClass;
-        subClass.prototype._callSuperConstructor = Inheritance._callSuperConstructor;
-        subClass.prototype._callSuperMethod = Inheritance._callSuperMethod;
+        //setup the extended class for super calls (square brakets used to support google closure)
+        subClass.prototype["_super_"] = superClass;
+        subClass.prototype["_callSuperConstructor"] = Inheritance._callSuperConstructor;
+        subClass.prototype["_callSuperMethod"] = Inheritance._callSuperMethod;
       }
       
     },
