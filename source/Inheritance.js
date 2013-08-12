@@ -114,7 +114,7 @@ define([], function(){
      * @static
      */
     _callSuperMethod: function(ownerClass, toCall, params){
-      return doCall(this,ownerClass.prototype._super_.prototype[toCall],params);
+      return doCall(this,ownerClass.prototype["_super_"].prototype[toCall],params);
     },
     
     /**
@@ -128,7 +128,7 @@ define([], function(){
      * @static
      */
     _callSuperConstructor: function(ownerClass, params){
-      doCall(this,ownerClass.prototype._super_, params);
+      doCall(this,ownerClass.prototype["_super_"], params);
     }
   
   
