@@ -87,7 +87,7 @@ define([], function(){
      * Inserts a full row in the matrix. If another row is already present in the
      * specified position it is overwritten.
      *  
-     * @param insRow the row to be added.
+     * @param insRow {Object} the row to be added.
      * @param row {String|Number} the row position.
      */
     insertRow: function(insRow, row) {
