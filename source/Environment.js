@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
-define(["IllegalStateException"], function(IllegalStateException){
+define(["./IllegalStateException"], function(IllegalStateException){
   
   var isBrowserDocumentVar = (typeof window !== "undefined"  && navigator && document);
   var isWebWorkerVar = typeof importScripts !== "undefined"; //potentially WebWorkers may appear on node.js
@@ -22,7 +22,6 @@ define(["IllegalStateException"], function(IllegalStateException){
   if (isBrowserDocumentVar && !document.getElementById) {
     throw new IllegalStateException("Not supported browser");
   }
-  
   /**
    * @exports Environment
    */

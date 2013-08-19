@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
-define(["IllegalArgumentException"],function(IllegalArgumentException) {
+define(["./IllegalArgumentException"],function(IllegalArgumentException) {
   
   //This is an abstract class; it could have been a module with a couple of static methods but I find it handier this way.
   
