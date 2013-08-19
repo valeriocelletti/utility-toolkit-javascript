@@ -35,6 +35,8 @@ define([], function(){
   }
   
   /**
+   * This module introduce a "classic" inheritance mechanism as well as an helper to
+   * copy methods from one class to another. See the Inhertiance method documentation below for details.
    * @exports Inheritance
    */
   var Inheritance = {
