@@ -82,7 +82,7 @@ define(["./Environment"],function(Environment) {
        */
       addEvent: function(obj, evnt, handler){ 
         if (!Environment.isBrowserDocument()) {
-          return;
+          return false;
         }
         if (typeof obj.addEventListener != "undefined") {
           obj.addEventListener(evnt, handler, false);
@@ -90,6 +90,7 @@ define(["./Environment"],function(Environment) {
         } else if (typeof obj.attachEvent != "undefined") { //old IE
           obj.attachEvent("on" + evnt, handler);
         } 
+        return true;
       } 
   };
   
