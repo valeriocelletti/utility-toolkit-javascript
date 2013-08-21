@@ -13,12 +13,12 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
-define(["./Utils","./EnvironmentStatus","./EventHelper","./Environment"], 
-    function(Utils,EnvironmentStatus,EventHelper,Environment){
+define(["./Helpers","./EnvironmentStatus","./Environment"], 
+    function(Helpers,EnvironmentStatus,Environment){
     var step = 50;
     var newStuffFlag = false;
     var toBeExecuted = [];
-    var now = Utils.getTimeStamp();
+    var now = Helpers.getTimeStamp();
     var toBeRepeated = [];
     var timer = null;
     var nextId = 0;
@@ -57,7 +57,7 @@ define(["./Utils","./EnvironmentStatus","./EventHelper","./Environment"],
           generateTickExecution = function() {
             window.postMessage("Lightstreamer.run",origin);
           };
-          EventHelper.addEvent("message", function(event){
+          Helpers.addEvent(window,"message", function(event){
             if (event.data == "Lightstreamer.run" && origin == "*" || event.origin == origin) {
               doTick();
             }
@@ -87,7 +87,7 @@ define(["./Utils","./EnvironmentStatus","./EventHelper","./Environment"],
       }
       
       //var last = now;
-      now = Utils.getTimeStamp();
+      now = Helpers.getTimeStamp();
       //adjustTimer(last, now);
       
       if (toBeExecuted.length > 0) {
