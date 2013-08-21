@@ -19,7 +19,7 @@ define(["./Executor","./List","./Inheritance"],
   //var actionsLogger = LoggerManager.getLoggerProxy(LoggerManager.ACTIONS);   
   
   /**
-   * This constructor simply calls the {@link initDispatcher} method. This abstract class is supposed 
+   * This constructor simply calls the {@link initDispatcher} method. This class is supposed 
    * to be extended using {@link Inheritance}
    * extension. It can be either light extended or fully extended. When light extension is performed
    * the {@link initDispatcher} method should be called in the extended class constructor.
@@ -88,6 +88,7 @@ define(["./Executor","./List","./Inheritance"],
        * <br/>This method MUST be called at least once before event dispatching can 
        * be exploited, otherwise most methods will fail either silently or with unexpected
        * exceptions as no init-checks are performed by them.
+       * @protected
        * 
        * @see useSynchEvents
        */
