@@ -16,12 +16,12 @@
 define([],function() {
 
   /**
-   * @exports IllegalArgumentException
    * Constructs an IllegalArgumentException with the specified detail message.
    * @constructor
    *
    * @param {String} message short description of the error.
    *
+   * @exports IllegalArgumentException
    * @class Thrown to indicate that a method has been passed an illegal 
    * or inappropriate argument.
    * <BR>Use toString to extract details on the error occurred.

@@ -29,11 +29,10 @@ define(["./Inheritance","./Matrix"],
   }*/
 
   /**
-   * @exports DoubleKeyMatrix
-   * 
    * Creates an empty DoubleKeyMatrix
    * @constructor
-   * 
+   *
+   * @exports DoubleKeyMatrix
    * @class A very specific Matrix that keeps a map tracking on which row a determined column is: in order to 
    * do this it is mandatory that no two rows have an element in the same column: checks are not performed to
    * keep this constraint true.

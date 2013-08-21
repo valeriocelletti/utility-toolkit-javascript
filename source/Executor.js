@@ -115,6 +115,7 @@ define(["./Utils","./EnvironmentStatus","./EventHelper","./Environment"],
      * When 0ms tasks are enqueued a postMessage call is used to trigger an immediate execution; on nodejs
      * the process.nextTick method is used in place of the postMessage; on older browser where postMessage
      * is not supported no action is taken.
+     * 
      * @exports Executor
      * @extends ExecutorInterface
      */

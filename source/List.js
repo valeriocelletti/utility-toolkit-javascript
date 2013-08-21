@@ -16,10 +16,10 @@
 define([],function() {
   
   /**
-   * @exports List
    * Creates an empty List instance
    * @constructor
-   * 
+   *
+   * @exports List
    * @class Very simple Array-backed List implementation.<br/>
    * It is discouraged the use of this class to handle big lists. 
    */

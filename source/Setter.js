@@ -55,12 +55,12 @@ define(["./IllegalArgumentException"],function(IllegalArgumentException) {
   var USE_TRUE_OR_FALSE = "Use true or false";
   
   /**
-   * @exports Setter
    * Fake constructor. This abstract class is supposed to be extended using {@link Inheritance}
    * light extension.
-   * @abstract
    * @constructor
    *
+   * @exports Setter
+   * @abstract
    * @class Abstract class to be  extended to gain input validation for a class' setter methods.
    * 
    * @example

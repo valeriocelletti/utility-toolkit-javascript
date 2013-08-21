@@ -198,7 +198,7 @@ define(["./Helpers","./BrowserDetection","./Environment","./List"],
     
     /**
      * Removes the specified onbeforeunload handler if present, otherwise it does nothing. 
-     * @param {Function|EnvironmentStatusListener} the function or object to be removed
+     * @param {Function|EnvironmentStatusListener} the function or object to be removed.
      */
     removeBeforeUnloadHandler: function(f) {
       onbeforeunloadFunctions.remove(f);
@@ -340,10 +340,10 @@ define(["./Helpers","./BrowserDetection","./Environment","./List"],
   
   
   /**
-   * @exports EnvironemntStatusListener
    * This constructor does nothing
    * @constructor
-   *
+   * 
+   * @exports EnvironmentStatusListener
    * @class Interface that can be implemented to listen to {@link EnvironmentStatus} events.
    */
   var EnvironmentStatusListener = function() { //only for jsdoc sake, closure will remove it

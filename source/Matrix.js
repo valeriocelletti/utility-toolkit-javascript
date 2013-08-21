@@ -16,12 +16,12 @@
 define([], function(){
  
   /**
-   * @exports Matrix
    * Creates a Matrix instance; if specified the matrix is initialized with the given object.
    * @constructor
    * 
    * @param {Object} inputMatrix the matrix to initialize this object with.
    * 
+   * @exports Matrix
    * @class Very simple object-backed bi-dimensional Matrix implementation.
    */
   var Matrix = function(inputMatrix) {

@@ -16,12 +16,12 @@
 define([],function() {
 
   /**
-   * @exports IllegalStateException
    * Constructs an IllegalStateException with the specified detail message.
    * @constructor
    *
    * @param {String} message short description of the error.
    *
+   * @exports IllegalStateException
    * @class Thrown to indicate that a method has been invoked at an illegal or 
    * inappropriate time or that the internal state of an object is incompatible 
    * with the call.
