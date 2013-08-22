@@ -73,7 +73,7 @@ define(["./Executor"],function(Executor) {
        * 
        * @see dismiss
        */
-      /*public*/ dismiss: function() {
+      dismiss: function() {
         this.inUse--;
         
         if (this.inUse <= 0) {
@@ -88,7 +88,7 @@ define(["./Executor"],function(Executor) {
        * 
        * @see dismiss
        */
-      /*public*/ touch: function() {
+      touch: function() {
         this.touchPhase++;
         if (this.inUse < 0){
           this.inUse=0;
@@ -98,6 +98,12 @@ define(["./Executor"],function(Executor) {
       
       
   };
+  
+  //closure compiler exports
+  Dismissable["touch"] = Dismissable.touch;
+  Dismissable["dismiss"] = Dismissable.dismiss;
+  Dismissable["clean"] = Dismissable.clean;
+  Dismissable["initTouches"] = Dismissable.initTouches;
   
   return Dismissable;
   
