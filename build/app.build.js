@@ -6,7 +6,7 @@
     optimize: "closure",
     closure: {
         CompilationLevel: 'ADVANCED_OPTIMIZATIONS',
-        loggingLevel: 'WARNING',
+        loggingLevel: 'SEVERE',
         avoidGlobals: true
     },
     
