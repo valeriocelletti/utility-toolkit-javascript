@@ -4,6 +4,5 @@ built
 docs
 build/js.jar
 build/compiler.jar
-build/r.js
 build/*.sh
 build/*.bat
