@@ -56,7 +56,7 @@ define([], function(){
      * @param {Function} superClass the class to be extended
      * @param {boolean} lightExtension if true constructor and colliding methods of the
      * super class are not ported on the subclass hence only non-colliding methods will be copied
-     * on the subclass
+     * on the subclass (this kind of extension is also known as mixin)
      * @static
      * 
      * @example
