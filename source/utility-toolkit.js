@@ -1,3 +1,3 @@
 define([],function(){
-  //see app.build.js
+  return "0.8";
 });
