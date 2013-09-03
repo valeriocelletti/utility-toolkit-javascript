@@ -22691,8 +22691,9 @@ define('rhino/optimize', ['logger', 'env!env/file'], function (logger, file) {
                 sourceListArray = new java.util.ArrayList(),
                 options, option, FLAG_compilation_level, compiler,
                 Compiler = Packages.com.google.javascript.jscomp.Compiler,
-                CommandLineRunner = Packages.com.google.javascript.jscomp.CommandLineRunner;
-
+                CommandLineRunner = Packages.com.google.javascript.jscomp.CommandLineRunner,
+                SourceFile = com.google.javascript.jscomp.SourceFile;
+                
             logger.trace("Minifying file: " + fileName);
 
             baseName = (new java.io.File(fileName)).getName();
@@ -22723,23 +22724,31 @@ define('rhino/optimize', ['logger', 'env!env/file'], function (logger, file) {
             Compiler.setLoggingLevel(Packages.java.util.logging.Level[config.loggingLevel || 'WARNING']);
             compiler = new Compiler();
             
+            //gets the default externs list
+            var externs = config.ignoreDefaultExterns ? new java.util.ArrayList() : CommandLineRunner.getDefaultExterns();
+            //add custom externs
+            if (config.externs) {
+                for (var i = 0; i < config.externs.length; i++) {
+                    externs.add(SourceFile.fromFile(config.externs[i]));
+                }
+            }
+            
             //fill the sourceArrrayList; we need the ArrayList because the only overload of compile 
             //accepting the getDefaultExterns return value (a List) also wants the sources as a List
             sourceListArray.add(jsSourceFile);
 
-            result = compiler.compile(CommandLineRunner.getDefaultExterns(), sourceListArray, options);
+            result = compiler.compile(externs, sourceListArray, options);
             if (result.success) {
                 optimized = String(compiler.toSource());
                 
-                var WRAPPER_START = "(function(){";
-                var WRAPPER_END = "}());";
+                var wrapperStart = "(function(){";
                 if (config.avoidGlobals) {
-                  optimized = WRAPPER_START + optimized + WRAPPER_END;
+                    optimized = wrapperStart + optimized + "}());";
                 }
 
                 if (config.generateSourceMaps && result.sourceMap && outFileName) {
-                    if (config.outputWrap) {
-                      result.sourceMap.setWrapperPrefix(WRAPPER_START);
+                    if (config.avoidGlobals) {
+                        result.sourceMap.setWrapperPrefix(wrapperStart);
                     }
                 
                     outBaseName = (new java.io.File(outFileName)).getName();

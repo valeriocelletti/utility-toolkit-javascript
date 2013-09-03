@@ -6,7 +6,7 @@ To build the toolkit some tools are required:
 *     Download compiler.jar from [https://developers.google.com/closure/compiler/](https://developers.google.com/closure/compiler/)
 *     Download js.jar from [https://developer.mozilla.org/en-US/docs/Rhino/Download_Rhino](https://developer.mozilla.org/en-US/docs/Rhino/Download_Rhino)
 *     ~~Download r.js from [https://github.com/jrburke/r.j](https://github.com/jrburke/r.j)~~ A custom build of r.js is currently included. It was
-      generated from [https://github.com/mone/r.js/tree/avoid-closure-globals](https://github.com/mone/r.js/tree/avoid-closure-globals)
+      generated from [https://github.com/mone/r.js](https://github.com/mone/r.js)
 
 put the downloaded files in this folder, then run
 
