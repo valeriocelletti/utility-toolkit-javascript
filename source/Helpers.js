@@ -115,4 +115,6 @@ define(["./Environment"],function(Environment) {
   Helpers["getNumber"] = Helpers.getNumber;
   Helpers["isArray"] = Helpers.isArray;
   Helpers["addEvent"] = Helpers.addEvent;
+  
+  return Helpers;
 });
