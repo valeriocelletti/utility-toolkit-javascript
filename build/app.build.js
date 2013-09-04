@@ -10,6 +10,8 @@
         avoidGlobals: true
     },
     
+    removeCombined: true,
+    
     modules: [
       {
         name: "utility-toolkit",
