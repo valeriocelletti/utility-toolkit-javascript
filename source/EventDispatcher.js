@@ -213,12 +213,12 @@ define(["./Executor","./List","./Inheritance"],
   };
 
   //closure compiler exports
-  EventDispatcher["initDispatcher"] = EventDispatcher.initDispatcher;
-  EventDispatcher["addListener"] = EventDispatcher.addListener;
-  EventDispatcher["removeListener"] = EventDispatcher.removeListener;
-  EventDispatcher["getListeners"] = EventDispatcher.getListeners;
-  EventDispatcher["useSynchEvents"] = EventDispatcher.useSynchEvents;
-  EventDispatcher["dispatchEvent"] = EventDispatcher.dispatchEvent;
+  EventDispatcher.prototype["initDispatcher"] = EventDispatcher.prototype.initDispatcher;
+  EventDispatcher.prototype["addListener"] = EventDispatcher.prototype.addListener;
+  EventDispatcher.prototype["removeListener"] = EventDispatcher.prototype.removeListener;
+  EventDispatcher.prototype["getListeners"] = EventDispatcher.prototype.getListeners;
+  EventDispatcher.prototype["useSynchEvents"] = EventDispatcher.prototype.useSynchEvents;
+  EventDispatcher.prototype["dispatchEvent"] = EventDispatcher.prototype.dispatchEvent;
   
   /**
    * extend the List class to power up the remove method:
