@@ -233,11 +233,11 @@ define(["./Executor","./List","./Inheritance"],
   };
   AsymList.prototype = {
     remove: function(remEl) {
-      for (var i=0; i<this._data.length; i++) {
-        if (this._data[i].handler == remEl) {
-          var toRet = this._data[i];
+      for (var i=0; i<this.data.length; i++) {
+        if (this.data[i].handler == remEl) {
+          var toRet = this.data[i];
           toRet.listening = false;
-          this._data.splice(i,1);
+          this.data.splice(i,1);
           return toRet;
         }
       }
