@@ -1,3 +1,3 @@
 define([],function(){
-  return "0.8.2";
+  return "0.8.3";
 });
