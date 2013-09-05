@@ -84,7 +84,7 @@ define(["./Helpers","./Environment"], function(Helpers,Environment){
     
     /**
      * Checks if the module is able to read and write cookies: when the module is loaded it performs
-     * a simple check to verify the functionality. When runnin on Node.js or WebWorkers it is always false. 
+     * a simple check to verify the functionality. When running on Node.js or WebWorkers it is always false. 
      * @returns {Boolean}
      */
     areCookiesEnabled: function() {
@@ -113,9 +113,6 @@ define(["./Helpers","./Environment"], function(Helpers,Environment){
     
     /**
      * @private
-     * @param key
-     * @param val
-     * @param expireStr
      */
     writeCookieExe: function(key, val, expireStr) {
       if (!this.areCookiesEnabled()) {
