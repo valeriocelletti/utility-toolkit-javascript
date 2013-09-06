@@ -13,29 +13,31 @@ require({
         ignoreDefaultExterns: false,
         avoidGlobals: true
     },
-    
+        
     removeCombined: true,
     
     modules: [
       {
         name: "utility-toolkit",
-        include: ["Inheritance",
-              "List",
-              "IllegalArgumentException",
-              "IllegalStateException",
-              "Environment",
-              "Setter",
-              "Matrix",
-              "DoubleKeyMatrix",
-              "DoubleKeyMap",
-              "BrowserDetection",
-              "Helpers",
-              "EnvironmentStatus",
-              "Executor",
-              "ExecutorSimple",
-              "EventDispatcher",
-              "CookieManager",
-              "Dismissable"]
+        include: [
+          "BrowserDetection",
+          "CookieManager",
+          "Dismissable",
+          "DoubleKeyMatrix",
+          "DoubleKeyMap",
+          "Environment",
+          "EnvironmentStatus",
+          "EventDispatcher",
+          "Executor",
+          "ExecutorSimple",
+          "Helpers",
+          "IllegalArgumentException",
+          "IllegalStateException",
+          "Inheritance",
+          "List",
+          "Matrix",
+          "Setter"
+        ]
       }
     ],
     
