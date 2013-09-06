@@ -139,11 +139,22 @@ define([],
         
       }
       
-   };
+    };
    
+    ExecutorSimple["getQueueLength"] = ExecutorSimple.getQueueLength;
+    ExecutorSimple["packTask"] = ExecutorSimple.packTask;
+    ExecutorSimple["addPackedTimedTask"] = ExecutorSimple.addPackedTimedTask;
+    ExecutorSimple["addRepetitiveTask"] = ExecutorSimple.addRepetitiveTask;
+    ExecutorSimple["stopRepetitiveTask"] = ExecutorSimple.stopRepetitiveTask;
+    ExecutorSimple["addTimedTask"] = ExecutorSimple.addTimedTask;
+    ExecutorSimple["modifyTaskParam"] = ExecutorSimple.modifyTaskParam;
+    ExecutorSimple["modifyAllTaskParams"] = ExecutorSimple.modifyAllTaskParams;
+    ExecutorSimple["delayTask"] = ExecutorSimple.delayTask;
+    ExecutorSimple["executeTask"] = ExecutorSimple.executeTask;
+    
    
 
-   return ExecutorSimple;
+    return ExecutorSimple;
 
 });   
  

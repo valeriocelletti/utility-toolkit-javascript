@@ -247,7 +247,17 @@ define(["./Helpers","./EnvironmentStatus","./Environment"],
      doInit();
    }
    
-
+   Executor["getQueueLength"] = Executor.getQueueLength;
+   Executor["packTask"] = Executor.packTask;
+   Executor["addPackedTimedTask"] = Executor.addPackedTimedTask;
+   Executor["addRepetitiveTask"] = Executor.addRepetitiveTask;
+   Executor["stopRepetitiveTask"] = Executor.stopRepetitiveTask;
+   Executor["addTimedTask"] = Executor.addTimedTask;
+   Executor["modifyTaskParam"] = Executor.modifyTaskParam;
+   Executor["modifyAllTaskParams"] = Executor.modifyAllTaskParams;
+   Executor["delayTask"] = Executor.delayTask;
+   Executor["executeTask"] = Executor.executeTask;
+   
    return Executor;
 
 });   

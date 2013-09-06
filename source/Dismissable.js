@@ -100,10 +100,10 @@ define(["./Executor"],function(Executor) {
   };
   
   //closure compiler exports
-  Dismissable["touch"] = Dismissable.touch;
-  Dismissable["dismiss"] = Dismissable.dismiss;
-  Dismissable["clean"] = Dismissable.clean;
-  Dismissable["initTouches"] = Dismissable.initTouches;
+  Dismissable.prototype["touch"] = Dismissable.prototype.touch;
+  Dismissable.prototype["dismiss"] = Dismissable.prototype.dismiss;
+  Dismissable.prototype["clean"] = Dismissable.prototype.clean;
+  Dismissable.prototype["initTouches"] = Dismissable.prototype.initTouches;
   
   return Dismissable;
   

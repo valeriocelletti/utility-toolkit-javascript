@@ -120,10 +120,10 @@ define(["./Inheritance","./Matrix"],
       
   };
   
-  Matrix.prototype["insert"] = Matrix.prototype.insert;
-  Matrix.prototype["del"] = Matrix.prototype.del;
-  Matrix.prototype["delReverse"] = Matrix.prototype.delReverse;
-  Matrix.prototype["delRow"] = Matrix.prototype.delRow;
+  DoubleKeyMatrix.prototype["insert"] = DoubleKeyMatrix.prototype.insert;
+  DoubleKeyMatrix.prototype["del"] = DoubleKeyMatrix.prototype.del;
+  DoubleKeyMatrix.prototype["delReverse"] = DoubleKeyMatrix.prototype.delReverse;
+  DoubleKeyMatrix.prototype["delRow"] = DoubleKeyMatrix.prototype.delRow;
  
   
   Inheritance(DoubleKeyMatrix,Matrix);
