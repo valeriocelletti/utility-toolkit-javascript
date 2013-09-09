@@ -62,7 +62,7 @@ define(["./Executor"],function(Executor) {
        */
       verifyTouches: function(ph) {
         if (ph == this.touchPhase && this.inUse <= 0) {
-          this["clean"]();
+          this.clean();
         }
       },
       
