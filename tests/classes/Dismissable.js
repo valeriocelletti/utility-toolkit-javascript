@@ -82,7 +82,7 @@ define([weswitClassPrefix+"Dismissable","weswit/AbstractTest","weswit/Inheritanc
   };
   
   Inheritance(DismissableTest,AbstractTest);
-  Inheritance(DismissableTest,Dismissable,true);
+  Inheritance(DismissableTest,Dismissable,true,true);
   return DismissableTest;
   
 });
