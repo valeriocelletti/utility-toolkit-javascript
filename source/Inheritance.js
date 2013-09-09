@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
-define([], function(){
+define(["./IllegalStateException"], function(IllegalStateException){
   
   /**
    * @method
@@ -34,6 +34,19 @@ define([], function(){
     }
   }
   
+  
+  /**
+   * @private
+   */
+  function searchAlias(proto,extendedName) {
+    for (var i in proto) {
+      if (proto[extendedName] == proto[i] && extendedName != i) {
+        return i;
+      }
+    }
+    return null;
+  }
+  
   /**
    * This module introduce a "classic" inheritance mechanism as well as an helper to
    * copy methods from one class to another. See the Inhertiance method documentation below for details.
@@ -51,12 +64,18 @@ define([], function(){
      * Once extended it is possible to call the super constructor calling the _callSuperConstructor
      * method and the super methods calling the _callSuperMethod method
      * <br/>Note that this function is the module itself (see the example)
+     * 
+     * @throws {IllegalStateException} if checkAliases is true and an alias of the super class
+     * collides with a different method on the subclass.
      *
      * @param {Function} subClass the class that will extend the superClass
      * @param {Function} superClass the class to be extended
-     * @param {boolean} lightExtension if true constructor and colliding methods of the
+     * @param {boolean} [lightExtension] if true constructor and colliding methods of the
      * super class are not ported on the subclass hence only non-colliding methods will be copied
      * on the subclass (this kind of extension is also known as mixin)
+     * @param {boolean} [checkAliases] if true aliases of colliding methods will be searched on the
+     * super class prototype and, if found, the same alias will be created on the subclass. This is 
+     * especially useful when extending a class that was minified using the Google Closure Compiler.  
      * @static
      * 
      * @example
@@ -87,12 +106,23 @@ define([], function(){
      *   
      * });
      */
-    Inheritance: function(subClass, superClass, lightExtension){
+    Inheritance: function(subClass, superClass, lightExtension, checkAliases){
       //iterate all of superClass's methods
       for (var i in superClass.prototype) {
         if (!subClass.prototype[i]) {
           //copy non-colliding methods directly
           subClass.prototype[i] = superClass.prototype[i];
+        } else if(checkAliases) {
+          //in case of collision search in the super prototype if the method has an alias
+          //and create the alias here too
+          var name = searchAlias(superClass.prototype,i);
+          if (name) {
+            if (subClass.prototype[name] && subClass.prototype[name] != subClass.prototype[i]) {
+              throw new IllegalStateException("Can't solve alias collision, try to minify the classes again (" + name + ", " + i + ")");
+            }
+            subClass.prototype[name] = subClass.prototype[i];
+          }
+          
         }
       }
      
