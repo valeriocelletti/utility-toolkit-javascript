@@ -40,7 +40,7 @@ define(["./Environment"], function(Environment){
   //we can directly set everything to false
   var INIT_VALUE = Environment.isBrowser() ? null : false;
 
-  var LOW_UA = navigator.userAgent.toLowerCase();
+  var LOW_UA = Environment.isBrowser() ? navigator.userAgent.toLowerCase() : null;
   
   function getSolution(myVer,reqVer,less) {
     if(!reqVer || !myVer) {
