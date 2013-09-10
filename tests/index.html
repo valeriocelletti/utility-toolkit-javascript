@@ -29,27 +29,28 @@
   
       
     var testLibs = ["classes/BrowserDetection",
-	                  "classes/CookieManager",
-	                  "classes/Dismissable",
-	                  "classes/DoubleKeyMap",
-	                  "classes/DoubleKeyMatrix",
-	                  "classes/EventDispatcher",
-	                  "classes/Executors",
-	                  "classes/Inheritance",
-	                  "classes/List",
-	                  "classes/Matrix",
-	                  "classes/Setter"];
-	  
-	  
-	  define("classes", testLibs, function() {
-	    return arguments;
-	  });
+                    "classes/CookieManager",
+                    "classes/Dismissable",
+                    "classes/DoubleKeyMap",
+                    "classes/DoubleKeyMatrix",
+                    "classes/EventDispatcher",
+                    "classes/Executors",
+                    "classes/IFrameHandler",
+                    "classes/Inheritance",
+                    "classes/List",
+                    "classes/Matrix",
+                    "classes/Setter"];
+    
+    
+    define("classes", testLibs, function() {
+      return arguments;
+    });
 
   
-	  require(["TestRunnerConfiguration"],function() {
-	    //tests are now running
-	  });
-		 
+    require(["TestRunnerConfiguration"],function() {
+      //tests are now running
+    });
+     
   </script>
 </body>
 </html>  

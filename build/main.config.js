@@ -31,6 +31,7 @@ require({
           "Executor",
           "ExecutorSimple",
           "Helpers",
+          "IFrameHandler",
           "IllegalArgumentException",
           "IllegalStateException",
           "Inheritance",
