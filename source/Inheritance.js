@@ -117,8 +117,14 @@ define(["./IllegalStateException"], function(IllegalStateException){
           //and create the alias here too
           var name = searchAlias(superClass.prototype,i);
           if (name) {
-            if (subClass.prototype[name] && subClass.prototype[name] != subClass.prototype[i]) {
-              throw new IllegalStateException("Can't solve alias collision, try to minify the classes again (" + name + ", " + i + ")");
+            //we want to copy  superClass.method to superClass.prototype[i], but subClass.prototype[i] already exists 
+            //name is an alias of i --> superClass.prototype[name] == superClass.prototype[i]
+            //if subClass has a name method thay is different not an alias of i (subClass.prototype[name] != subClass.prototype[i]) there is a collision problem
+            if (subClass.prototype[name] && subClass.prototype[name] !== subClass.prototype[i]) {
+              //unless the alias name was previously copied from superClass ( superClass.prototype[name] == superClass.prototype[name] )
+              if (superClass.prototype[name] !== superClass.prototype[name]) {
+                throw new IllegalStateException("Can't solve alias collision, try to minify the classes again (" + name + ", " + i + ")");
+              }
             }
             subClass.prototype[name] = subClass.prototype[i];
           }
