@@ -75,7 +75,10 @@ define(["./IllegalStateException"], function(IllegalStateException){
      * on the subclass (this kind of extension is also known as mixin)
      * @param {boolean} [checkAliases] if true aliases of colliding methods will be searched on the
      * super class prototype and, if found, the same alias will be created on the subclass. This is 
-     * especially useful when extending a class that was minified using the Google Closure Compiler.  
+     * especially useful when extending a class that was minified using the Google Closure Compiler.
+     * Note however that collisions can still occur, between a property and a method and between methods
+     * when the subclass is minified too. The only way to prevent collisions is to minify super and sub 
+     * classes together.
      * @static
      * 
      * @example
