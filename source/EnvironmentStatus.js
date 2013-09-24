@@ -351,6 +351,9 @@ define(["./Helpers","./BrowserDetection","./Environment","./List"],
   EnvironmentStatus["removeOnloadHandler"] = EnvironmentStatus.removeOnloadHandler;
   EnvironmentStatus["removeUnloadHandler"] = EnvironmentStatus.removeUnloadHandler;
   EnvironmentStatus["removeBeforeUnloadHandler"] = EnvironmentStatus.removeBeforeUnloadHandler;
+  EnvironmentStatus["isLoaded"] = EnvironmentStatus.isLoaded;
+  EnvironmentStatus["isUnloaded"] = EnvironmentStatus.isUnloaded;
+  EnvironmentStatus["isUnloading"] = EnvironmentStatus.isUnloading;
   
   
   

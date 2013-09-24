@@ -56,6 +56,9 @@ EnvironmentStatus.addBeforeUnloadHandler = function() {};
 EnvironmentStatus.removeOnloadHandler = function() {};
 EnvironmentStatus.removeUnloadHandler = function() {};
 EnvironmentStatus.removeBeforeUnloadHandler = function() {};
+EnvironmentStatus.isLoaded = function() {};
+EnvironmentStatus.isUnloaded = function() {};
+EnvironmentStatus.isUnloading = function() {};
 
 EventDispatcher = function() {}; 
 EventDispatcher.prototype.initDispatcher = function() {};
