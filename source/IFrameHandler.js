@@ -1,7 +1,7 @@
 define(["./BrowserDetection","./EnvironmentStatus","./Environment"], 
     function(BrowserDetection,EnvironmentStatus,Environment){
     
-    Environment.browserDocumentOrDie();
+    //Environment.browserDocumentOrDie();
   
     //about:blank causes entry in history on chrome (from the second iFrame on...)
     //null prevents IE from attaching
@@ -23,6 +23,9 @@ define(["./BrowserDetection","./EnvironmentStatus","./Environment"],
        * generated or if the window is not accessible
        */
       createFrame: function(name,src) {
+        if (!Environment.isBrowserDocument()) {
+          return null;
+        }
         var bodyEl = document.getElementsByTagName("BODY")[0];
         if (!bodyEl) {
           return null;
