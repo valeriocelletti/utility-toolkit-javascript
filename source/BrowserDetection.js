@@ -227,7 +227,7 @@ define(["./Environment"], function(Environment){
        */  
       isProbablyFX: getVersionedFunction(
                                          getSimpleUACheckFunction("firefox"),
-                                         getExtractVersioByRegexpFunction(new RegExp("Firefox\\/(\\d+\\.?\\d*)"))
+                                         getExtractVersioByRegexpFunction(new RegExp("firefox\\/(\\d+\\.?\\d*)"))
                                          ), //mad check
       /**
        * Check if the browser in use is probably an old Opera (i.e.: up to the WebKit switch) or not. A specific version or version range can be requested.
@@ -261,11 +261,15 @@ define(["./Environment"], function(Environment){
                                                     ]); //expected test results
      
     /**
-     * Check if the browser in use is probably an Apple Browser (i.e. Safari or Safari Mobile) or not
+     * Check if the browser in use is probably an Apple Browser (i.e. Safari or Safari Mobile) or not. A specific version or version range can be requested.
      * @method
-     * @return {Boolean} true if probably a an Apple Browser, false if probably not.
+     * @param {Number=} requestedVersion The version to be checked. If not specified any version will do.
+     * @param {Boolean=} orLowerFlag true to check versions up to the specified one, false to check for greater versions; the specified version
+     * is always included. If missing only the specified version is considered.
+     * @return {Boolean} true if the browser is probably the correct one, false if probably not.
      */ 
-    BrowserDetection.isProbablyApple = getChainedANDFunction([ // safari + (ipad || iphone || ipod || (!android+!chrome+!rekonq))
+    BrowserDetection.isProbablyApple = getVersionedFunction( 
+                                        getChainedANDFunction([ // safari + (ipad || iphone || ipod || (!android+!chrome+!rekonq))
                                             getSimpleUACheckFunction("safari"),
                                             getChainedORFunction([
                                                                   getSimpleUACheckFunction("ipad"),
@@ -276,7 +280,9 @@ define(["./Environment"], function(Environment){
                                                                                          getNotFunction(BrowserDetection.isProbablyChrome),
                                                                                          getNotFunction(BrowserDetection.isProbablyRekonq)])
                                                                   ])
-                                            ]); //spin fix
+                                            ]),
+                                            getExtractVersioByRegexpFunction(new RegExp("version\\/(\\d+\\.?\\d*)"))
+                                          ); //spin fix / windows communication
   
   BrowserDetection["isProbablyRekonq"] = BrowserDetection.isProbablyRekonq;
   BrowserDetection["isProbablyChrome"] = BrowserDetection.isProbablyChrome;

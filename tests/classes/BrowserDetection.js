@@ -39,30 +39,37 @@ define([weswitClassPrefix+"BrowserDetection","weswit/AbstractTest","weswit/Inher
         ASSERT.verifySuccess(BrowserDetection,"isProbablyPlaystation",ASSERT.VOID,ASSERT.VOID);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyAndroidBrowser",ASSERT.VOID,ASSERT.VOID);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyOperaMobile",ASSERT.VOID,ASSERT.VOID);
-        ASSERT.verifySuccess(BrowserDetection,"isProbablyApple",ASSERT.VOID,ASSERT.VOID);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyAKhtml",ASSERT.VOID,ASSERT.VOID);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyKonqueror",ASSERT.VOID,ASSERT.VOID);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyIE",ASSERT.VOID,ASSERT.VOID);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyFX",ASSERT.VOID,ASSERT.VOID);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyOldOpera",ASSERT.VOID,ASSERT.VOID);
         
+        /**
+         * true to check versions up to the specified one, false to check for greater versions; the specified version
+         * is always included. If missing only the specified version is considered.
+         */
+        
         //can be certain we're not using version 1 of these browsers
         ASSERT.verifySuccess(BrowserDetection,"isProbablyKonqueror",[1],false);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyIE",[1],false);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyFX",[1],false);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyOldOpera",[1],false);
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyApple",[1],false);
         
         //we may be using one of these
-        ASSERT.verifySuccess(BrowserDetection,"isProbablyKonqueror",[1,true],ASSERT.VOID);
-        ASSERT.verifySuccess(BrowserDetection,"isProbablyIE",[1,true],ASSERT.VOID);
-        ASSERT.verifySuccess(BrowserDetection,"isProbablyFX",[1,true],ASSERT.VOID);
-        ASSERT.verifySuccess(BrowserDetection,"isProbablyOldOpera",[1,true],ASSERT.VOID);
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyKonqueror",[1,false],ASSERT.VOID);
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyIE",[1,false],ASSERT.VOID);
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyFX",[1,false],ASSERT.VOID);
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyOldOpera",[1,false],ASSERT.VOID);
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyApple",[1,false],ASSERT.VOID);
         
         //can be certain we're not using version 1 or lower of these browsers
-        ASSERT.verifySuccess(BrowserDetection,"isProbablyKonqueror",[1,false],false);
-        ASSERT.verifySuccess(BrowserDetection,"isProbablyIE",[1,false],false);
-        ASSERT.verifySuccess(BrowserDetection,"isProbablyFX",[1,false],false);
-        ASSERT.verifySuccess(BrowserDetection,"isProbablyOldOpera",[1,false],false);
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyKonqueror",[1,true],false);
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyIE",[1,true],false);
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyFX",[1,true],false);
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyOldOpera",[1,true],false);
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyApple",[1,true],false);
         
         this.end();
       }
