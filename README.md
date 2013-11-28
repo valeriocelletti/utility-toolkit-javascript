@@ -1,4 +1,4 @@
-# Weswit JavaScript utilities Toolkit #
+# Weswit JavaScript Utilities Toolkit #
 
 This project contains an utility toolkit that is part of the Lightstreamer JavaScript client library.
 The various classes are written as AMD modules.
