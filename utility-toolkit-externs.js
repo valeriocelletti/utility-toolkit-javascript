@@ -60,6 +60,11 @@ EnvironmentStatus.isLoaded = function() {};
 EnvironmentStatus.isUnloaded = function() {};
 EnvironmentStatus.isUnloading = function() {};
 
+EnvironmentStatusListener = function() {}; 
+EnvironmentStatusListener.prototype.onloadEvent = function(){};
+EnvironmentStatusListener.prototype.unloadEvent = function(){};
+EnvironmentStatusListener.prototype.preUnloadEvent = function(){};
+
 EventDispatcher = function() {}; 
 EventDispatcher.prototype.initDispatcher = function() {};
 EventDispatcher.prototype.addListener = function() {};
