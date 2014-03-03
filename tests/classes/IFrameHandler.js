@@ -18,15 +18,16 @@ define([weswitClassPrefix+"IFrameHandler","weswit/AbstractTest","weswit/Inherita
    
   var testLogger = AbstractTest.testLogger;
 
-  var IFrameHandlerTest = function(createMethod,name) {
+  var IFrameHandlerTest = function(createMethod,secondParam,name) {
     this._callSuperConstructor(IFrameHandlerTest);
      
     this.createMethod = createMethod;
+    this.secondParam = secondParam;
     this.name = name;
   };
   
   IFrameHandlerTest.getInstances = function() {
-    return [new IFrameHandlerTest("createFrame","LS__testframe1"),new IFrameHandlerTest("getFrameWindow","LS__testframe2")];
+    return [new IFrameHandlerTest("createFrame",null,"LS__testframe1"),new IFrameHandlerTest("createFrame",null,"LS__testframe1b"),new IFrameHandlerTest("getFrameWindow",true,"LS__testframe2")];
   };
   
   IFrameHandlerTest.prototype = {
@@ -36,12 +37,14 @@ define([weswitClassPrefix+"IFrameHandler","weswit/AbstractTest","weswit/Inherita
       
       start:function() { 
         
+        var startupHistory = window.history.length;
+        
         testLogger.debug("Check that does not exists");
         ASSERT.verifySuccess(IFrameHandler,"getFrameWindow",[this.name],null,true);
         
         var that = this;
         testLogger.debug("Check create");
-        ASSERT.verifySuccess(IFrameHandler,this.createMethod,[this.name,true],null,function(v1,v2) {
+        ASSERT.verifySuccess(IFrameHandler,this.createMethod,[this.name,this.secondParam],null,function(v1,v2) {
           testLogger.debug("Check iframe");
           ASSERT.verifyOk(v1);
           
@@ -49,10 +52,9 @@ define([weswitClassPrefix+"IFrameHandler","weswit/AbstractTest","weswit/Inherita
           return ASSERT.verifySuccess(IFrameHandler,"getFrameWindow",[that.name],v1,true);
           
         });
-        
+
         var inn = document.getElementsByTagName("BODY")[0].innerHTML;
         inn = inn.toLowerCase();
-        
         
         testLogger.debug("Check BODY 1");
         ASSERT.verifyOk(inn.indexOf("<"+"iframe") > -1);
@@ -71,6 +73,9 @@ define([weswitClassPrefix+"IFrameHandler","weswit/AbstractTest","weswit/Inherita
         testLogger.debug("Check deletion via BODY");
         ASSERT.verifyOk(inn.indexOf("<"+"iframe") <= -1);
         
+        var endHistory = window.history.length;
+        ASSERT.verifyValue(startupHistory,endHistory);
+       
         this.end();
         
       }
