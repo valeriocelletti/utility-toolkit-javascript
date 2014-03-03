@@ -5,13 +5,11 @@ define(["./BrowserDetection","./EnvironmentStatus","./Environment"],
   
     //about:blank causes entry in history on chrome (from the second iFrame on...)
     //null prevents IE from attaching
-    var DEFAULT_SRC = BrowserDetection.isProbablyAWebkit() ? null : "about:blank";
-  
+    //since chrome 33 using null causes a request to be sent by chrome, luckily the history issue seems solved now
+    var DEFAULT_SRC = BrowserDetection.isProbablyAWebkit() && BrowserDetection.isProbablyChrome(32,true) ? null : "about:blank";
+
     var handledFrames = {}; 
     
-    var removeDot = new RegExp("\\.","g");
-    var removeMinus = new RegExp("-","g");
-     
     var IFrameHandler = {
       
       /**
