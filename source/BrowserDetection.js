@@ -165,12 +165,6 @@ define(["./Environment"], function(Environment){
        */
       isProbablyRekonq: getSimpleUACheckFunction("rekonq"),  //used by isProbablyApple thus "spin fix"
       /**
-       * Check if the browser in use is probably a Chrome (or Chrome tab) or not
-       * @method
-       * @return {Boolean} true if probably a Chrome (or Chrome tab), false if probably not.
-       */
-      isProbablyChrome: getSimpleUACheckFunction("chrome/"), //used by isProbablyApple / used by isProbablyAndroid / windows communication
-      /**
        * Check if the browser in use is probably a WebKit based browser or not
        * @method
        * @return {Boolean} true if probably a WebKit based browser, false if probably not.
@@ -182,6 +176,18 @@ define(["./Environment"], function(Environment){
        * @return {Boolean} true if probably a Playstation 3 browser, false if probably not.
        */
       isProbablyPlaystation: getSimpleUACheckFunction("playstation 3"),  //expected streaming behavior
+      /**
+       * Check if the browser in use is probably a Chrome (or Chrome tab)  or not. A specific version or version range can be requested.
+       * @method
+       * @param {Number=} requestedVersion The version to be checked. If not specified any version will do.
+       * @param {Boolean=} orLowerFlag true to check versions up to the specified one, false to check for greater versions; the specified version
+       * is always included. If missing only the specified version is considered.
+       * @return {Boolean} true if the browser is probably the correct one, false if probably not.
+       */
+      isProbablyChrome: getVersionedFunction( 
+                                                  getSimpleUACheckFunction("chrome/"),
+                                                  getExtractVersioByRegexpFunction(new RegExp("chrome/([0-9]+)","g"))
+                                                  ),  // iframe content generation / used by isProbablyApple / used by isProbablyAndroid / windows communication
       /**
        * Check if the browser in use is probably a KHTML browser or not
        * @method

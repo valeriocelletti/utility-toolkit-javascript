@@ -51,6 +51,7 @@ define([weswitClassPrefix+"BrowserDetection","weswit/AbstractTest","weswit/Inher
          */
         
         //can be certain we're not using version 1 of these browsers
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyChrome",[1],false);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyKonqueror",[1],false);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyIE",[1],false);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyFX",[1],false);
@@ -58,6 +59,7 @@ define([weswitClassPrefix+"BrowserDetection","weswit/AbstractTest","weswit/Inher
         ASSERT.verifySuccess(BrowserDetection,"isProbablyApple",[1],false);
         
         //we may be using one of these
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyChrome",[1,false],ASSERT.VOID);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyKonqueror",[1,false],ASSERT.VOID);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyIE",[1,false],ASSERT.VOID);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyFX",[1,false],ASSERT.VOID);
@@ -65,6 +67,7 @@ define([weswitClassPrefix+"BrowserDetection","weswit/AbstractTest","weswit/Inher
         ASSERT.verifySuccess(BrowserDetection,"isProbablyApple",[1,false],ASSERT.VOID);
         
         //can be certain we're not using version 1 or lower of these browsers
+        ASSERT.verifySuccess(BrowserDetection,"isProbablyChrome",[1,true],false);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyKonqueror",[1,true],false);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyIE",[1,true],false);
         ASSERT.verifySuccess(BrowserDetection,"isProbablyFX",[1,true],false);
