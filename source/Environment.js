@@ -17,7 +17,7 @@ define(["./IllegalStateException"], function(IllegalStateException){
   
   var isBrowserDocumentVar = (typeof window !== "undefined"  && navigator && document);
   var isWebWorkerVar = typeof importScripts !== "undefined"; //potentially WebWorkers may appear on node.js
-  var isNodeJSVar = typeof process == "object" && (/node(\.exe)?$/.test(process.execPath) || (process.node && process.v8));
+  var isNodeJSVar = typeof process == "object" && (/node(\.exe)?$/.test(process.execPath) || (process.node && process.v8) || (process.versions && process.versions.node && process.versions.v8 ));
   
   if (isBrowserDocumentVar && !document.getElementById) {
     throw new IllegalStateException("Not supported browser");
