@@ -19,6 +19,8 @@ define(["./Helpers","./EnvironmentStatus","./Environment"],
     var newStuffFlag = false;
     var toBeExecuted = [];
     var now = Helpers.getTimeStamp();
+    var RESET_TIME = 3*60*60*1000; //3 hours
+    var resetAt = now+RESET_TIME; //workaround for Safari 5 windows: after several hours the toBeExecuted array becomes unusable (OOM)
     var toBeRepeated = [];
     var timer = null;
     var nextId = 0;
@@ -122,7 +124,10 @@ define(["./Helpers","./EnvironmentStatus","./Environment"],
         Executor.addPackedTimedTask(t,t.step,true);
       }
       
-     
+      if (now >= resetAt) {
+        resetAt = now+RESET_TIME;
+        toBeExecuted = [].concat(toBeExecuted);
+      }
     }
 
     /**
