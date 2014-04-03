@@ -35,7 +35,8 @@ define(["./Helpers","./EnvironmentStatus","./Environment"],
     
     //TICK handling stuff
     var origin = Environment.isBrowserDocument() && document.location.protocol != "file:" ? (document.location.protocol+"//"+document.location.hostname+(document.location.port?":"+document.location.port:"")) : "*";
-    var generateTickExecution = function() { /*setTimeout(doTick,0); */ };
+    var DEFAULT_GENERATE_TICK = function() { /*setTimeout(doTick,0); */ };
+    var generateTickExecution = DEFAULT_GENERATE_TICK;
     var pendingGeneratedTick = false;
     function doTick() {
       pendingGeneratedTick = false;
@@ -59,11 +60,22 @@ define(["./Helpers","./EnvironmentStatus","./Environment"],
           generateTickExecution = function() {
             window.postMessage("Lightstreamer.run",origin);
           };
-          Helpers.addEvent(window,"message", function(event){
+          
+          var postMessageHandler = function(event){
             if (event.data == "Lightstreamer.run" && origin == "*" || event.origin == origin) {
               doTick();
             }
-          }, true);
+          };
+          Helpers.addEvent(window,"message", postMessageHandler);
+          
+          ///verify if postMessage can be used 
+          generateTick();
+          if (pendingGeneratedTick == false) {
+            //post message can't be used, rollback
+            Helpers.removeEvent(window,"message", postMessageHandler);
+            generateTickExecution =  DEFAULT_GENERATE_TICK;
+          }
+          
         } else if (Environment.isNodeJS() && typeof process != "undefined" && process.nextTick) {
           //  on node versions having the nextTick method we rely on that
           generateTickExecution  = function() {
