@@ -104,6 +104,7 @@ Helpers.trim = function() {};
 Helpers.getNumber = function() {};
 Helpers.isArray = function() {};
 Helpers.addEvent = function() {};
+Helpers.removeEvent = function() {};
 
 IFrameHandler = {};
 IFrameHandler.createFrame = function() {};

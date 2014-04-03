@@ -106,6 +106,26 @@ define(["./Environment"],function(Environment) {
           obj.attachEvent("on" + evnt, handler);
         } 
         return true;
+      },
+      
+      /**
+       * Removes a handler for a browser event. 
+       * @param {Object} obj the element that is listened to.
+       * @param {String} evnt the event that is listened to.
+       * @param {Function} handler the function that is called
+       * @returns {Boolean} true if the event was removed, false otherwise.
+       */
+      removeEvent: function(obj, evnt, handler){ 
+        if (!Environment.isBrowserDocument()) {
+          return false;
+        }
+        if (typeof obj.removeEventListener != "undefined") {
+          obj.removeEventListener(evnt, handler, false);
+          
+        } else if (typeof obj.detachEvent != "undefined") { //old IE
+          obj.detachEvent("on" + evnt, handler);
+        } 
+        return true;
       } 
   };
   
@@ -115,6 +135,7 @@ define(["./Environment"],function(Environment) {
   Helpers["getNumber"] = Helpers.getNumber;
   Helpers["isArray"] = Helpers.isArray;
   Helpers["addEvent"] = Helpers.addEvent;
+  Helpers["removeEvent"] = Helpers.removeEvent;
   
   return Helpers;
 });
