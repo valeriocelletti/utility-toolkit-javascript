@@ -151,7 +151,7 @@ define(["./IllegalStateException"], function(IllegalStateException){
      * 
      * @param {Function} ownerClass the class that calls this method.
      * @param {String} toCall the name of the super function to be called.
-     * @param {Array} params array of parameters to be used to call the super method.
+     * @param {Array} [params] array of parameters to be used to call the super method.
      * @static
      */
     _callSuperMethod: function(ownerClass, toCall, params){
@@ -165,7 +165,7 @@ define(["./IllegalStateException"], function(IllegalStateException){
      * <br/>Note that it is not actrually visible in this module.
      *
      * @param {Function} ownerClass the class that calls this method.
-     * @param {Array} params array of parameters to be used to call the super constructor.
+     * @param {Array} [params] array of parameters to be used to call the super constructor.
      * @static
      */
     _callSuperConstructor: function(ownerClass, params){
