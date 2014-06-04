@@ -206,7 +206,7 @@ define(["./Helpers","./Environment"], function(Helpers,Environment){
         return;
       }
       
-      if (document.location.protocol == "file:") {
+      if (document.location.protocol != "http:" && document.location.protocol != "https:") {
         //do not write cookies if loaded from filesystem.
         return;
       }
