@@ -34,7 +34,7 @@ define(["./Helpers","./EnvironmentStatus","./Environment"],
     }
     
     //TICK handling stuff
-    var origin = Environment.isBrowserDocument() && document.location.protocol == "http:" || document.location.protocol == "https:" ? (document.location.protocol+"//"+document.location.hostname+(document.location.port?":"+document.location.port:"")) : "*";
+    var origin = Environment.isBrowserDocument() && (document.location.protocol == "http:" || document.location.protocol == "https:") ? (document.location.protocol+"//"+document.location.hostname+(document.location.port?":"+document.location.port:"")) : "*";
     var DEFAULT_GENERATE_TICK = function() { /*setTimeout(doTick,0); */ };
     var generateTickExecution = DEFAULT_GENERATE_TICK;
     var pendingGeneratedTick = false;
